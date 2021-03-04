@@ -11,7 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -69,6 +72,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView tvBody;
         TextView tvScreenName;
         TextView tvTimestamp;
+        TextView tvName;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,12 +80,16 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+            tvName = itemView.findViewById(R.id.tvName);
         }
 
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
-            tvScreenName.setText(tweet.user.screenName);
-            Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
+            tvName.setText(tweet.user.name);
+            String username = "@" + tweet.user.screenName;
+            tvScreenName.setText(username);
+            Glide.with(context).load(tweet.user.profileImageUrl)
+                    .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).circleCrop().into(ivProfileImage);
             String relativeTimestamp = "\u2022 " + Tweet.getFormattedTimeStamp(tweet.createdAt);
             tvTimestamp.setText(relativeTimestamp);
         }
