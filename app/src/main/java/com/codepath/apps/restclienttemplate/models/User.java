@@ -16,4 +16,8 @@ public class User {
         user.profileImageUrl = jsonObject.getString("profile_image_url_https");
         return user;
     }
+
+    public static String getBiggerProfileImageUrl(String profileUrl){
+        return profileUrl.replace("_normal.", "_bigger.");
+    }
 }

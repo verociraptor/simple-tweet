@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.models.User;
 
 import org.w3c.dom.Text;
 
@@ -88,8 +90,12 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvName.setText(tweet.user.name);
             String username = "@" + tweet.user.screenName;
             tvScreenName.setText(username);
-            Glide.with(context).load(tweet.user.profileImageUrl)
-                    .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).circleCrop().into(ivProfileImage);
+
+            String biggerProfileUrl = User.getBiggerProfileImageUrl(tweet.user.profileImageUrl);
+            Log.i("TweetsAdapter", tweet.user.profileImageUrl + " " + biggerProfileUrl);
+            Glide.with(context).load(biggerProfileUrl)
+                    .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+                    .circleCrop().into(ivProfileImage);
             String relativeTimestamp = "\u2022 " + Tweet.getFormattedTimeStamp(tweet.createdAt);
             tvTimestamp.setText(relativeTimestamp);
         }
