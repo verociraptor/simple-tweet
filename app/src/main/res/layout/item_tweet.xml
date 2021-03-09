@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:background="@color/mainBackground"
+    app:layout_insetEdge="bottom">
 
     <ImageView
         android:id="@+id/ivProfileImage"
@@ -25,6 +29,7 @@
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@id/ivProfileImage"
         android:text="Vronrat"
+        android:textColor="@color/mainText"
         android:textStyle="bold" />
 
 
@@ -36,7 +41,8 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@id/tvName"
-        android:text="vronrat" />
+        android:text="vronrat"
+        android:textColor="@color/textAlt" />
 
     <com.codepath.apps.restclienttemplate.LinkifiedTextView
         android:id="@+id/tvBody"
@@ -48,7 +54,9 @@
         android:layout_toEndOf="@id/ivProfileImage"
         android:autoLink="all"
         android:linksClickable="true"
-        android:text="This is my tweet!!!" />
+        android:text="This is my tweet!!!"
+        android:textColor="@color/mainText"
+        android:textColorLink="@color/textLink" />
 
     <TextView
         android:id="@+id/tvTimestamp"
@@ -59,8 +67,7 @@
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@id/tvScreenName"
         android:text="6h"
-        android:textColor="#939090" />
-
+        android:textColor="@color/textAlt" />
 
 
 </RelativeLayout>

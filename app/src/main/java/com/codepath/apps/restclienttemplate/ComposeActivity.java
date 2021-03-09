@@ -3,11 +3,16 @@ package com.codepath.apps.restclienttemplate;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -16,14 +21,20 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import org.json.JSONException;
 import org.parceler.Parcels;
 
+import java.util.Objects;
+
 import okhttp3.Headers;
 
 public class ComposeActivity extends AppCompatActivity {
 
-    public static final int MAX_TWEET_LENGTH = 140;
+    public static final int MAX_TWEET_LENGTH = 280;
     EditText etCompose;
     Button btnTweet;
+    TextView tvCharCount;
     TwitterClient client;
+    ColorStateList oldTVColors;
+    Button btnCancel;
+
     public static final String TAG = "ComposeActivity";
 
     @Override
@@ -33,6 +44,31 @@ public class ComposeActivity extends AppCompatActivity {
 
         client = TwitterApp.getRestClient(this);
         etCompose = findViewById(R.id.etCompose);
+        tvCharCount = findViewById(R.id.tvCharCount);
+        oldTVColors = tvCharCount.getTextColors();
+        etCompose.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if(charSequence.length() > MAX_TWEET_LENGTH){
+                    tvCharCount.setTextColor(Color.RED);
+                }
+                else{
+                    tvCharCount.setTextColor(oldTVColors);
+                }
+                tvCharCount.setText(String.valueOf(charSequence.length()));
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         btnTweet = findViewById(R.id.btnTweet);
 
         //set onclick listener on button
@@ -72,6 +108,15 @@ public class ComposeActivity extends AppCompatActivity {
                         Log.e(TAG, "onFailure to publish tweet", throwable);
                     }
                 });
+            }
+        });
+
+        btnCancel = findViewById(R.id.btnCancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(RESULT_CANCELED);
+                finish();
             }
         });
         //make api call to twitter to publish tweet

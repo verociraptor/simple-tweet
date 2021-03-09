@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBackground"
     tools:context=".ComposeActivity">
 
     <EditText
@@ -14,22 +14,29 @@
         android:layout_below="@id/btnTweet"
         android:layout_alignParentStart="true"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="5dp"
+        android:backgroundTint="@color/textAlt"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/what_s_happening"
         android:inputType="textMultiLine"
-        android:minLines="5" />
+        android:minLines="5"
+        android:textColor="@color/mainText"
+        android:textColorHint="@color/textAlt" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btnTweet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
-        android:text="@string/tweet" />
+        android:background="@drawable/btn_compose_bg"
+        android:text="@string/tweet"
+        android:minHeight="30dp"
+        android:minWidth="80dp"
+        android:textColor="@color/mainText" />
 
     <Button
         android:id="@+id/btnCancel"
@@ -38,8 +45,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/cancel" />
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/ic_menu_close_clear_cancel"
+        android:backgroundTint="@color/colorAccent"
+        android:minWidth="10dp"
+        android:minHeight="10dp"
+        android:textColor="@color/mainText" />
 
     <TextView
         android:id="@+id/tvCharCount"
@@ -49,5 +60,6 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
-        android:text="128" />
+        android:text="@string/_0"
+        android:textColor="@color/textAlt" />
 </RelativeLayout>
