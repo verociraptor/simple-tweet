@@ -45,6 +45,7 @@ public class ComposeActivity extends AppCompatActivity {
         client = TwitterApp.getRestClient(this);
         etCompose = findViewById(R.id.etCompose);
         tvCharCount = findViewById(R.id.tvCharCount);
+        btnTweet = findViewById(R.id.btnTweet);
         oldTVColors = tvCharCount.getTextColors();
         etCompose.addTextChangedListener(new TextWatcher() {
             @Override
@@ -57,9 +58,11 @@ public class ComposeActivity extends AppCompatActivity {
 
                 if(charSequence.length() > MAX_TWEET_LENGTH){
                     tvCharCount.setTextColor(Color.RED);
+                    btnTweet.setEnabled(false);
                 }
                 else{
                     tvCharCount.setTextColor(oldTVColors);
+                    btnTweet.setEnabled(true);
                 }
                 tvCharCount.setText(String.valueOf(charSequence.length()));
             }
@@ -69,7 +72,7 @@ public class ComposeActivity extends AppCompatActivity {
 
             }
         });
-        btnTweet = findViewById(R.id.btnTweet);
+
 
         //set onclick listener on button
         btnTweet.setOnClickListener(new View.OnClickListener() {

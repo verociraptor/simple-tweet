@@ -3,7 +3,7 @@
     <color name="colorPrimary"></color>
     <color name="colorPrimaryDark"></color>
     <color name="colorAccent">#1da1f2</color>
-
+    <color name="disabledColor">#19618f</color>
 
     <color name="mainText">#ffffff</color>
     <color name="textAlt">#8899a6</color>
