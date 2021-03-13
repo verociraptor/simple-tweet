@@ -8,7 +8,7 @@
     <string name="tweet">Tweet</string>
     <string name="what_s_happening">"What's happening?"</string>
     <string name="cancel">Cancel</string>
-    <string name="_0">0</string>
+    <string name="_0">0/280</string>
     <string name="compose">Compose</string>
 
 </resources>

@@ -64,7 +64,8 @@ public class ComposeActivity extends AppCompatActivity {
                     tvCharCount.setTextColor(oldTVColors);
                     btnTweet.setEnabled(true);
                 }
-                tvCharCount.setText(String.valueOf(charSequence.length()));
+                String currentCount = String.valueOf(charSequence.length()) + "/280";
+                tvCharCount.setText(currentCount);
             }
 
             @Override

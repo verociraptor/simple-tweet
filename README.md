@@ -31,6 +31,8 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] User can click on the Cancel button on compose tweet page to exit the page.
+- [x] Tweet button is disabled and greyed out when tweet reaches max character count or above.
+- [x] Character count turns red when user has reached max character count or above.
 
 ## Video Walkthrough
 
@@ -45,7 +47,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 Describe any challenges encountered while building the app.
 
 A major challenge was stylizing the app and understanding which files these style definitions
-should go in.
+should go in. Another challenge was getting the button to grey out and getting the character count
+to turn red when max character count was reached. I had to set up an event listener and change the
+styles of the button when it's enabled and disabled.
 
 ## **Part 1**
 Time spent: **6** hours spent in total
